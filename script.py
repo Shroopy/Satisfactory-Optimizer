@@ -6,9 +6,10 @@ def basic_recurse(component_name: str) -> None:
     component = COMPONENTS[component_name]
     if component.recipes[0] is None:
         return
-    ingredients = RECIPES[component.recipes[0]].ingredients
-    for ingredient in ingredients:
-        basic_recurse(ingredient.component)
+    for recipe in component.recipes:
+        ingredients = RECIPES[recipe].ingredients
+        for ingredient in ingredients:
+            basic_recurse(ingredient.component)
 
 
 def main():
